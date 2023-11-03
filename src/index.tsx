@@ -1,23 +1,35 @@
-type UserWalletType = {
-    title: string
-    amount: number
-}
-type UserWalletPropsType = {
-    wallet: UserWalletType
+type StateType = {
+    volume: number // in percents
+    trackUrl: string // 'https://blabla.com/track01.mp3',
+    currentPlayPosition: number // milliseconds,
 }
 
-export const UserWallet: React.FC<UserWalletPropsType> = (props) => {
-    return <div>title: {props.wallet.title}, amount: {props.wallet.amount}</div>
+export const reducer = (state: StateType, action: any) => {
+    switch (action.type) {
+        case 'TRACK-URL-CHANGED':
+            return {
+                ...state,
+                trackUrl: action.url
+            }
+        case 'TRACK-MUTED':
+            return {
+                ...state,
+                volume: 0
+            }
+        case 'TRACK-REWOUND-TO-START':
+            return {
+                ...state,
+                currentPlayPosition: 0
+            }
+        default:
+            return state
+    }
 }
 
-export const UserMoney = () => {
-    const wallets = [
-        {title: 'bitcoin', amount: 1},
-        {title: '$', amount: 100}
-    ]
+const muteTrackAC = () => ({type: 'TRACK-MUTED'})
+const changeTrackAC = (url: string) => ({type: 'TRACK-URL-CHANGED', url})
+// перемотатьНаНачало:
+const rewindToStart = () => ({type: 'TRACK-REWOUND-TO-START'})
 
-    return <div>
-        <UserWallet wallet={wallets[0]} />
-        <UserWallet wallet={wallets[1]} />
-    </div>
-}
+// Какие типы должны быть вместо XXX, YYY и ZZZ?
+// Ответ дать через пробел, например:   'BLABLA' 'HEYНЕY' 'HIPHOP'
