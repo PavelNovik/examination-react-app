@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 type samuraiType = {
     id: string
     name: string
     status: "online" | "offline"
 }
-type CourseNameType = "HTML"|"JS"|"React"|"Redux"|"HomeWorks"
+type CourseNameType = "HTML" | "JS" | "React" | "Redux" | "HomeWorks"
 type CourseType = {
     name: CourseNameType
     mentor: string
@@ -20,38 +20,39 @@ const samuraiID_2 = "90lg-34ks"
 const samuraiID_3 = "12jm-05fd"
 
 export const samurai: Array<samuraiType> = [
-    {id: samuraiID_1, name: "Bob", status: "online"},
-    {id: samuraiID_2, name: "Alex", status: "offline"},
-    {id: samuraiID_3, name: "Ann", status: "offline"},
+    { id: samuraiID_1, name: "Bob", status: "online" },
+    { id: samuraiID_2, name: "Alex", status: "offline" },
+    { id: samuraiID_3, name: "Ann", status: "offline" },
 ]
 
 export const technologies: TechnologiesType = {
     [samuraiID_1]: [
-        {name: "HTML", mentor: "Svetlana", isDone: true},
-        {name: "JS", mentor: "Viktor", isDone: true},
-        {name: "React", mentor: "Dmitrij", isDone: false},
-        {name: "Redux", mentor: "Valera", isDone: false},
-        {name: "HomeWorks", mentor: "Ignat", isDone: true},
+        { name: "HTML", mentor: "Svetlana", isDone: true },
+        { name: "JS", mentor: "Viktor", isDone: true },
+        { name: "React", mentor: "Dmitrij", isDone: false },
+        { name: "Redux", mentor: "Valera", isDone: false },
+        { name: "HomeWorks", mentor: "Ignat", isDone: true },
     ],
     [samuraiID_2]: [
-        {name: "HTML", mentor: "Svetlana", isDone: true},
-        {name: "JS", mentor: "Viktor", isDone: true},
-        {name: "React", mentor: "Dmitrij", isDone: true},
-        {name: "Redux", mentor: "Valera", isDone: false},
-        {name: "HomeWorks", mentor: "Ignat", isDone: true},
+        { name: "HTML", mentor: "Svetlana", isDone: true },
+        { name: "JS", mentor: "Viktor", isDone: true },
+        { name: "React", mentor: "Dmitrij", isDone: true },
+        { name: "Redux", mentor: "Valera", isDone: false },
+        { name: "HomeWorks", mentor: "Ignat", isDone: true },
     ],
     [samuraiID_3]: [
-        {name: "HTML", mentor: "Svetlana", isDone: true},
-        {name: "JS", mentor: "Viktor", isDone: true},
-        {name: "React", mentor: "Dmitrij", isDone: false},
-        {name: "Redux", mentor: "Valera", isDone: false},
-        {name: "HomeWorks", mentor: "Ignat", isDone: false},
+        { name: "HTML", mentor: "Svetlana", isDone: true },
+        { name: "JS", mentor: "Viktor", isDone: true },
+        { name: "React", mentor: "Dmitrij", isDone: false },
+        { name: "Redux", mentor: "Valera", isDone: false },
+        { name: "HomeWorks", mentor: "Ignat", isDone: false },
     ],
 }
 
 export const updateCourseStatus = (samuraiID: string, name: CourseNameType, isDone: boolean) => {
-    return {...technologies,
-        [samuraiID]: technologies[samuraiID].map(c => c.name === name ? {...c, isDone} : c)
+    return {
+        ...technologies,
+        [samuraiID]: technologies[samuraiID].map(c => c.name === name ? { ...c, isDone } : c)
     }
 }
 // Дан список самураев из инкубатора и структура, хранящая данные о курсах,
@@ -59,3 +60,18 @@ export const updateCourseStatus = (samuraiID: string, name: CourseNameType, isDo
 // Так же дана функция updateCourseStatus,
 // которая позволяет отметить курс как пройденный самураем или снять такую отметку
 // Что надо написать вместо XXX, чтобы функция работала?
+
+
+
+const user = {
+    name: "Maxim",
+    age: 35,
+    friends: ["Natali", "Leo", "Ivan"]
+}
+
+const updatedUser = {
+    ...user,
+    friends: user.friends
+}
+
+console.log(user.friends === updatedUser.friends)
